@@ -8,6 +8,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  visibility: hidden;
+}
+
+.modal_opened {
+  visibility: visible;
 }
 
 .modal__close {
@@ -60,10 +65,6 @@
   letter-spacing: 0%;
   padding-bottom: 24px;
 }
-
-/* .modal__label:first-of-type {
-  padding-bottom: 24px;
-} */
 
 .modal__input {
   display: block;
