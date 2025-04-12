@@ -39,6 +39,11 @@
   border-color: #0000004d;
 }
 
+/* .modal_with_form .modal__content {
+  height: 436px;
+  max-width: 496px;
+} */
+
 .modal__title {
   font-family: "Cabinet Grotesk Regular", Arial, Helvetica, sans-serif;
   font-weight: 700;
