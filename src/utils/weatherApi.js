@@ -14,8 +14,14 @@ export const filterWeatherData = (data) => {
   const result = {};
   result.city = data.name;
   result.temp = { F: data.main.temp };
-  result.type = getWeatherType(data.main.temp);
+  result.type = getWeatherType(result.temp.F);
+  result.condition = data.weather[0].main.toLowerCase();
+  result.isDay = isDay(data.sys, Date.now());
   return result;
+};
+
+const isDay = ({ sunrise, sunset }, now) => {
+  return sunrise * 1000 < now && now < sunset * 1000;
 };
 
 const getWeatherType = (temperature) => {
