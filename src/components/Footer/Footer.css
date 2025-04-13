@@ -1,0 +1,30 @@
+.footer {
+  width: 1358px;
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(243, 243, 243, 1);
+  padding: 171px 0 24px 0;
+}
+
+.footer__author {
+  font-family: "Cabinet Grotesk Regular", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  vertical-align: bottom;
+  color: #000000;
+  margin: 0 0 0 40px;
+}
+
+.footer__year {
+  font-family: "Cabinet Grotesk Regular", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  vertical-align: bottom;
+  color: #000000;
+  margin: 0 42px 0 0;
+}
