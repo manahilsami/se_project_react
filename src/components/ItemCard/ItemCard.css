@@ -2,6 +2,7 @@
   height: 325px;
   width: 323px;
   border: 1px solid rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   border-radius: 19px;
   position: relative;
   display: flex;
