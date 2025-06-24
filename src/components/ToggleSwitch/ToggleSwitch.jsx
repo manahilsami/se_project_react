@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import "./ToggleSwitch.css";
-import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
 export default function ToggleSwitch() {
   const { handleToggleSwitchChange, currentTemperatureUnit } = useContext(
@@ -24,7 +24,15 @@ export default function ToggleSwitch() {
       >
         F
       </span>
-      <span className="toggle-switch__text toggle-switch__text_C">C</span>
+      <span
+        className={`toggle-switch__text toggle-switch__text_C ${
+          currentTemperatureUnit === "C"
+            ? "toggle-switch__text_color_white"
+            : ""
+        }`}
+      >
+        C
+      </span>
     </label>
   );
 }
