@@ -1,9 +1,8 @@
 import ClothesSection from "../ClothesSection/ClothesSection";
 import Sidebar from "../SideBar/SideBar";
-import { defaultClothingItems } from "../../utils/constants";
 import "./Profile.css";
 
-function Profile({ onCardClick }) {
+function Profile({ onCardClick, clothingItems }) {
   return (
     <div className="profile">
       <section className="profile__sidebar">
@@ -11,7 +10,7 @@ function Profile({ onCardClick }) {
       </section>
       <section className="profile__clothing-items">
         <ClothesSection
-          clothingItems={defaultClothingItems}
+          clothingItems={clothingItems}
           onCardClick={onCardClick}
         />
       </section>

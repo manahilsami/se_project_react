@@ -1,6 +1,6 @@
 import "./ItemModal.css";
 
-function ItemModal({ activeModal, onClose, card }) {
+function ItemModal({ activeModal, onClose, onDelete, card }) {
   return (
     <div
       className={`modal modal__overlay ${
@@ -20,6 +20,13 @@ function ItemModal({ activeModal, onClose, card }) {
           ></button>
           <img src={card.link} alt={card.name} className="modal__image" />
           <div className="modal__footer">
+            <button
+              onClick={onDelete}
+              type="button"
+              className="modal__delete_item"
+            >
+              Delete Item
+            </button>
             <h2 className="modal__caption">{card.name}</h2>
             <p className="modal__weather">Weather: {card.weather}</p>
           </div>

@@ -56,6 +56,22 @@
   cursor: pointer;
 }
 
+.modal__delete_item {
+  border: none;
+  background: #ffffff;
+  top: 518px;
+  margin-left: 365px;
+  font-family: "Cabinet Grotesk Regular", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  color: #ff4d00;
+  width: 101px;
+  height: 24px;
+  padding: 0;
+}
+
 .modal__image {
   height: 498px;
   width: 498px;
