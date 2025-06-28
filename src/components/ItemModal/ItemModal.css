@@ -1,3 +1,6 @@
+.modal {
+}
+
 .modal__overlay {
   position: fixed;
   top: 0;
@@ -16,8 +19,6 @@
 }
 
 .modal_item {
-  height: 610px;
-  width: 498px;
   display: flex;
   align-items: flex-start;
   border-radius: 16px;
@@ -27,12 +28,15 @@
   position: fixed;
 }
 
-.modal__content {
+.item-modal__content {
   position: relative;
+  background-color: #ffffff;
+  border-radius: 16px;
 }
 
 .modal__content_type_image {
   width: 498px;
+  height: 610px;
   display: flex;
   flex-direction: column;
   position: relative;
