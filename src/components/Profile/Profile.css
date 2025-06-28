@@ -1,0 +1,20 @@
+.profile {
+  display: flex;
+  margin-top: 19px;
+}
+
+.profile__sidebar {
+  margin-right: 116px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: row;
+  width: 229px;
+  height: 56px;
+  gap: 16px;
+}
+
+.profile__clothing-items {
+  /* margin-top: 19px; */
+}

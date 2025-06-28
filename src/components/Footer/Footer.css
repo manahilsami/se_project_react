@@ -1,8 +1,8 @@
 .footer {
-  width: 1358px;
   height: 20px;
   display: flex;
   justify-content: space-between;
+  flex-direction: row;
   background-color: rgba(243, 243, 243, 1);
   padding: 171px 0 24px 0;
 }
