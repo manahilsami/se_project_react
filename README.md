@@ -64,17 +64,8 @@ src/
 
 ---
 
-## Credits
-
-- Developed by Manahil Sami (2025)
-- Inspired by Practicum's WTWR project
-
----
-
 ## Notes
 
-- This is a college project, so some features are basic.
 - The weather API and backend are mocked for local development.
-- Feel free to fork and improve!
 
 ---
