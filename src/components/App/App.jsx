@@ -2,11 +2,7 @@ import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
-import {
-  coordinates,
-  APIkey,
-  defaultClothingItems,
-} from "../../utils/constants";
+import { coordinates, APIkey } from "../../utils/constants";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Main from "../Main/Main";
@@ -48,18 +44,9 @@ function App() {
     setActiveModal("");
   };
 
-  // const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
-  //   setClothingItems((prevItems) => [
-  //     { name, link: imageUrl, weather },
-  //     ...prevItems,
-  //   ]);
-  //   closeActiveModal();
-  // };
-
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
     postItem({ name, imageUrl, weather })
       .then((newItem) => {
-        // Normalize the data shape for consistency
         setClothingItems((prevItems) => [
           { ...newItem, link: newItem.imageUrl },
           ...prevItems,
