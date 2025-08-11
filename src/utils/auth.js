@@ -27,7 +27,7 @@ export const signin = ({ email, password }) => {
   }).then(processResponse);
 };
 
-// Check token validity and get user data
+
 export const checkToken = (token) => {
   return fetch(`${baseUrl}/users/me`, {
     method: "GET",
@@ -35,5 +35,5 @@ export const checkToken = (token) => {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  });
+  }).then(processResponse);
 };

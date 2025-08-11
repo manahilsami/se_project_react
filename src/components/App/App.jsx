@@ -92,7 +92,8 @@ function App() {
   };
 
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
-    postItem({ name, imageUrl, weather })
+    const token = localStorage.getItem("jwt");
+    postItem({ name, imageUrl, weather }, token)
       .then((newItem) => {
         setClothingItems((prevItems) => [
           { ...newItem, link: newItem.imageUrl },
@@ -105,7 +106,8 @@ function App() {
       });
   };
   const handleDeleteItem = () => {
-    deleteItem(selectedCard._id)
+    const token = localStorage.getItem("jwt");
+    deleteItem(selectedCard._id, token)
       .then(() => {
         setClothingItems((prevItems) =>
           prevItems.filter((item) => item._id !== selectedCard._id)
