@@ -14,9 +14,10 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { getItems, postItem, deleteItem } from "../../utils/api";
-import { signup, signin, checkToken } from "../../utils/auth";
+import { signup, signin, checkToken, updateProfile } from "../../utils/auth";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -55,6 +56,10 @@ function App() {
     setActiveModal("register");
   };
 
+  const handleEditProfileClick = () => {
+    setActiveModal("edit-profile");
+  };
+
   const closeActiveModal = () => {
     setActiveModal("");
   };
@@ -89,6 +94,19 @@ function App() {
       })
       .catch((err) => {
         console.error("Login failed:", err);
+      });
+  };
+
+  const handleEditProfileSubmit = ({ name, avatar }) => {
+    const token = localStorage.getItem("jwt");
+    updateProfile({ name, avatar }, token)
+      .then((updatedUser) => {
+        console.log("Profile updated successfully:", updatedUser);
+        setCurrentUser(updatedUser.user || updatedUser);
+        closeActiveModal();
+      })
+      .catch((err) => {
+        console.error("Profile update failed:", err);
       });
   };
 
@@ -190,6 +208,7 @@ function App() {
                       onCardClick={handleCardClick}
                       clothingItems={clothingItems}
                       handleAddClick={handleAddClick}
+                      handleEditProfileClick={handleEditProfileClick}
                     />
                   </ProtectedRoute>
                 }
@@ -216,6 +235,11 @@ function App() {
             isOpen={activeModal === "login"}
             onClose={closeActiveModal}
             onLoginSubmit={handleLoginSubmit}
+          />
+          <EditProfileModal
+            isOpen={activeModal === "edit-profile"}
+            onClose={closeActiveModal}
+            onEditProfileSubmit={handleEditProfileSubmit}
           />
           <Footer />
         </div>

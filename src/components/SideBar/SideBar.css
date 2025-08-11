@@ -1,6 +1,24 @@
 .sidebar__avatar {
   width: 56px;
   height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.sidebar__avatar-placeholder {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #2f80ed;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Cabinet Grotesk Regular", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .sidebar__username {
@@ -9,4 +27,22 @@
   font-size: 20px;
   line-height: 100%;
   letter-spacing: 0%;
+  margin: 20px 0;
+}
+
+.sidebar__edit-button {
+  background: none;
+  border: none;
+  font-family: "Cabinet Grotesk Regular", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar__edit-button:hover {
+  opacity: 0.6;
 }
