@@ -165,7 +165,12 @@ function App() {
       >
         <div className="page">
           <div className="page__content">
-            <Header handleAddClick={handleAddClick} weatherData={weatherData} />
+            <Header 
+              handleAddClick={handleAddClick} 
+              weatherData={weatherData}
+              handleLoginClick={handleLoginClick}
+              handleRegisterClick={handleRegisterClick}
+            />
             <Routes>
               <Route
                 path="/"
