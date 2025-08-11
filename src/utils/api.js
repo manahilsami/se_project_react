@@ -35,4 +35,22 @@ function deleteItem(id, token) {
   }).then(checkResponse);
 }
 
-export { getItems, postItem, deleteItem };
+function addCardLike(id, token) {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  }).then(checkResponse);
+}
+
+function removeCardLike(id, token) {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  }).then(checkResponse);
+}
+
+export { getItems, postItem, deleteItem, addCardLike, removeCardLike };

@@ -6,8 +6,20 @@
   border-radius: 19px;
   position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   overflow: hidden;
+}
+
+.card__header {
+  position: absolute;
+  top: 15px;
+  bottom: 287px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
 }
 
 .card__name {
@@ -19,8 +31,8 @@
   border-radius: 4px;
   background-color: rgba(255, 255, 255, 1);
   color: rgba(0, 0, 0, 0.6);
-  position: absolute;
-  top: 15px;
+  /* position: absolute;
+  top: 15px; */
   padding: 2px 12px;
   height: 24px;
   margin: 0;
@@ -32,4 +44,28 @@
   display: flex;
   align-items: center;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card__like-button {
+  position: absolute;
+  top: 20px;
+  right: 111px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 18px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.card__like-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }

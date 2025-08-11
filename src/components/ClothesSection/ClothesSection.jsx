@@ -3,7 +3,7 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 import ItemCard from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
 
-function ClothesSection({ clothingItems, onCardClick, handleAddClick }) {
+function ClothesSection({ clothingItems, onCardClick, handleAddClick, onCardLike }) {
   const currentUser = useContext(CurrentUserContext);
 
   const userClothingItems = clothingItems.filter(
@@ -25,7 +25,12 @@ function ClothesSection({ clothingItems, onCardClick, handleAddClick }) {
       <ul className="clothes-section__items">
         {userClothingItems.map((item) => {
           return (
-            <ItemCard key={item._id} item={item} onCardClick={onCardClick} />
+            <ItemCard 
+              key={item._id} 
+              item={item} 
+              onCardClick={onCardClick} 
+              onCardLike={onCardLike}
+            />
           );
         })}
       </ul>

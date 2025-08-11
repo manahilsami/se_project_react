@@ -4,7 +4,14 @@
 }
 
 .profile__sidebar {
+  width: 229px;
+  height: 138px;
   margin-right: 116px;
+}
+
+.profile__clothing {
+  width: 1015px;
+  height: 676px;
 }
 
 .sidebar {
@@ -13,8 +20,4 @@
   width: 229px;
   height: 56px;
   gap: 16px;
-}
-
-.profile__clothing-items {
-  /* margin-top: 19px; */
 }
