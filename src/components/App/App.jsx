@@ -15,7 +15,7 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { getItems, postItem, deleteItem } from "../../utils/api";
-import { signup, signin } from "../../utils/auth";
+import { signup, signin, checkToken } from "../../utils/auth";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -74,17 +74,15 @@ function App() {
 
   const handleLoginSubmit = ({ email, password }) => {
     signin({ email, password })
-      .then((data) => {
-        console.log("User logged in successfully:", data);
-        
-        // Check if server provided a token and store it
-        if (data.token) {
-          localStorage.setItem("jwt", data.token);
+      .then((res) => {
+        console.log("User logged in successfully:", res);
+
+        if (res.token) {
+          localStorage.setItem("jwt", res.token);
           console.log("JWT token stored in localStorage");
         }
-        
-        // Set user data and authentication state
-        setCurrentUser(data.user || data);
+
+        setCurrentUser(res.user || res);
         setIsLoggedIn(true);
         closeActiveModal();
       })
@@ -140,6 +138,23 @@ function App() {
       .catch(console.error);
   }, []);
 
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    if (token) {
+      checkToken(token)
+        .then((res) => {
+          console.log("Token is valid, user authenticated:", res);
+          setCurrentUser(res.user || res);
+          setIsLoggedIn(true);
+        })
+        .catch((err) => {
+          console.error("Token validation failed:", err);
+
+          localStorage.removeItem("jwt");
+        });
+    }
+  }, []);
+
   return (
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -154,7 +169,7 @@ function App() {
                 <Main
                   weatherData={weatherData}
                   handleCardClick={handleCardClick}
-                  clothingItems={clothingItems} 
+                  clothingItems={clothingItems}
                 />
               }
             />
