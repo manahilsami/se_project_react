@@ -131,7 +131,7 @@ function App() {
       .then((data) => {
         const formattedItems = data.map((item) => ({
           ...item,
-          link: item.imageUrl, // <- fix here
+          link: item.imageUrl,
         }));
         setClothingItems(formattedItems);
       })
