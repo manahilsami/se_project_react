@@ -11,7 +11,11 @@ import Profile from "../Profile/Profile";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import RegisterModal from "../RegisterModal/RegisterModal";
+import LoginModal from "../LoginModal/LoginModal";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { getItems, postItem, deleteItem } from "../../utils/api";
+import { signup, signin } from "../../utils/auth";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -26,6 +30,8 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -40,8 +46,51 @@ function App() {
     setActiveModal("add-garment");
   };
 
+  const handleLoginClick = () => {
+    setActiveModal("login");
+  };
+
+  const handleRegisterClick = () => {
+    setActiveModal("register");
+  };
+
   const closeActiveModal = () => {
     setActiveModal("");
+  };
+
+  const handleRegisterSubmit = ({ name, avatar, email, password }) => {
+    signup({ name, avatar, email, password })
+      .then((response) => {
+        console.log("User registered successfully:", response);
+        setCurrentUser(response.user || response);
+        setIsLoggedIn(true);
+        closeActiveModal();
+        console.log("User automatically signed in after registration");
+      })
+      .catch((err) => {
+        console.error("Registration failed:", err);
+      });
+  };
+
+  const handleLoginSubmit = ({ email, password }) => {
+    signin({ email, password })
+      .then((data) => {
+        console.log("User logged in successfully:", data);
+        
+        // Check if server provided a token and store it
+        if (data.token) {
+          localStorage.setItem("jwt", data.token);
+          console.log("JWT token stored in localStorage");
+        }
+        
+        // Set user data and authentication state
+        setCurrentUser(data.user || data);
+        setIsLoggedIn(true);
+        closeActiveModal();
+      })
+      .catch((err) => {
+        console.error("Login failed:", err);
+      });
   };
 
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
@@ -105,18 +154,20 @@ function App() {
                 <Main
                   weatherData={weatherData}
                   handleCardClick={handleCardClick}
-                  clothingItems={clothingItems} // pass the clothing items as prop
+                  clothingItems={clothingItems} 
                 />
               }
             />
             <Route
               path="/profile"
               element={
-                <Profile
-                  onCardClick={handleCardClick}
-                  clothingItems={clothingItems}
-                  handleAddClick={handleAddClick}
-                />
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <Profile
+                    onCardClick={handleCardClick}
+                    clothingItems={clothingItems}
+                    handleAddClick={handleAddClick}
+                  />
+                </ProtectedRoute>
               }
             />
           </Routes>
@@ -131,6 +182,16 @@ function App() {
           card={selectedCard}
           onClose={closeActiveModal}
           onDelete={handleDeleteItem}
+        />
+        <RegisterModal
+          isOpen={activeModal === "register"}
+          onClose={closeActiveModal}
+          onRegisterSubmit={handleRegisterSubmit}
+        />
+        <LoginModal
+          isOpen={activeModal === "login"}
+          onClose={closeActiveModal}
+          onLoginSubmit={handleLoginSubmit}
         />
         <Footer />
       </div>

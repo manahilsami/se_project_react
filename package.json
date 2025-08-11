@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "express": "^4.21.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.30.1"
@@ -24,6 +25,19 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.14",
     "globals": "^15.11.0",
-    "vite": "^5.4.10"
-  }
+    "vite": "^7.0.2"
+  },
+  "description": "This is a simple weather-based clothing app built with **React** and **Vite**. It lets you check the weather and see what clothes you might want to wear. You can also add and delete clothing items, and view your profile.",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manahilsami/se_project_react.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manahilsami/se_project_react/issues"
+  },
+  "homepage": "https://github.com/manahilsami/se_project_react#readme"
 }
