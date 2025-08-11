@@ -7,14 +7,19 @@ import "./Header.css";
 import logo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.png";
 
-function Header({ handleAddClick, weatherData, handleLoginClick, handleRegisterClick }) {
+function Header({
+  handleAddClick,
+  weatherData,
+  handleLoginClick,
+  handleRegisterClick,
+}) {
   const currentUser = useContext(CurrentUserContext);
-  
+
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
-  
+
   return (
     <header className="header">
       <Link to="/">
@@ -27,9 +32,8 @@ function Header({ handleAddClick, weatherData, handleLoginClick, handleRegisterC
 
       <div className="header__right">
         <ToggleSwitch />
-        
+
         {currentUser ? (
-          // Authorized user view
           <>
             <button
               onClick={handleAddClick}
@@ -41,16 +45,21 @@ function Header({ handleAddClick, weatherData, handleLoginClick, handleRegisterC
             <Link to="/profile" className="header__link">
               <div className="header__user-container">
                 <p className="header__username">{currentUser.name}</p>
-                <img
-                  src={currentUser.avatar || avatar}
-                  alt={currentUser.name}
-                  className="header__avatar"
-                />
+                {currentUser.avatar ? (
+                  <img
+                    src={currentUser.avatar}
+                    alt={currentUser.name}
+                    className="header__avatar"
+                  />
+                ) : (
+                  <div className="header__avatar-placeholder">
+                    {currentUser.name?.charAt(0).toUpperCase()}
+                  </div>
+                )}
               </div>
             </Link>
           </>
         ) : (
-          // Non-authorized user view
           <div className="header__auth-buttons">
             <button
               onClick={handleRegisterClick}
