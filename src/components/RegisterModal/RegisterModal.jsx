@@ -36,13 +36,12 @@ export default function RegisterModal({ onClose, isOpen, onRegisterSubmit }) {
   return (
     <ModalWithForm
       title="Sign up"
-      buttonText="Sign up"
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
     >
-      <label htmlFor="register-email" className="modal__label">
-        Email{" "}
+      <label htmlFor="register-email" className="modal__label-register">
+        Email*{" "}
         <input
           type="email"
           className="modal__input"
@@ -53,8 +52,8 @@ export default function RegisterModal({ onClose, isOpen, onRegisterSubmit }) {
           value={email}
         />
       </label>
-      <label htmlFor="register-password" className="modal__label">
-        Password{" "}
+      <label htmlFor="register-password" className="modal__label-register">
+        Password*{" "}
         <input
           type="password"
           className="modal__input"
@@ -66,8 +65,8 @@ export default function RegisterModal({ onClose, isOpen, onRegisterSubmit }) {
           value={password}
         />
       </label>
-      <label htmlFor="register-name" className="modal__label">
-        Name{" "}
+      <label htmlFor="register-name" className="modal__label-register">
+        Name*{" "}
         <input
           type="text"
           className="modal__input"
@@ -80,8 +79,8 @@ export default function RegisterModal({ onClose, isOpen, onRegisterSubmit }) {
           value={name}
         />
       </label>
-      <label htmlFor="register-avatar" className="modal__label">
-        Avatar URL{" "}
+      <label htmlFor="register-avatar" className="modal__label-register">
+        Avatar URL*{" "}
         <input
           type="url"
           className="modal__input"
@@ -91,6 +90,13 @@ export default function RegisterModal({ onClose, isOpen, onRegisterSubmit }) {
           value={avatar}
         />
       </label>
+
+      <div className="modal__register-button-section">
+        <button type="submit" className="modal__register-submit">
+          Sign up
+        </button>
+        <span className="modal__register-or-text">or Log In</span>
+      </div>
     </ModalWithForm>
   );
 }

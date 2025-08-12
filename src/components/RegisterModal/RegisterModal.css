@@ -1,34 +1,69 @@
-/* RegisterModal styles can inherit from the base modal styles */
-/* Add any specific styles for the RegisterModal here if needed */
-
-.modal__label {
+.modal__label-register {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
   font-family: "Cabinet Grotesk", Arial, sans-serif;
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;
+  margin-bottom: 24px;
   color: rgba(0, 0, 0, 0.7);
 }
 
-.modal__input {
-  margin-top: 8px;
-  padding: 16px 12px;
-  border: 1px solid rgba(0, 0, 0, 0.4);
-  border-radius: 4px;
+.modal__form .modal__input {
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 0;
   font-family: "Cabinet Grotesk", Arial, sans-serif;
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;
+  margin-bottom: 0px;
   color: rgba(0, 0, 0, 0.7);
+  background-color: transparent;
 }
 
-.modal__input::placeholder {
+.modal__form .modal__input::placeholder {
   color: rgba(0, 0, 0, 0.3);
 }
 
-.modal__input:focus {
+.modal__form .modal__input:focus {
   outline: none;
-  border-color: #2f80ed;
+  border-bottom-color: #2f80ed;
+}
+
+.modal__register-button-section {
+  display: flex;
+  align-items: center;
+  margin-top: 6px;
+  gap: 16px;
+}
+
+.modal__register-submit {
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #ffffff;
+  padding: 8px 16px;
+  width: auto;
+  min-width: 124px;
+  height: 36px;
+  border-radius: 4px;
+  background-color: #0000004d;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal__register-submit:hover {
+  background-color: #000000;
+}
+
+.modal__register-or-text {
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.6);
 }

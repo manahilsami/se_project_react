@@ -7,6 +7,11 @@ import "./ItemCard.css";
 function ItemCard({ item, onCardClick, onCardLike }) {
   const currentUser = useContext(CurrentUserContext);
 
+  // Return early if currentUser is not loaded yet
+  if (!currentUser) {
+    return null;
+  }
+
   const handleCardClick = () => {
     onCardClick(item);
   };
@@ -15,12 +20,12 @@ function ItemCard({ item, onCardClick, onCardLike }) {
     onCardLike({ id: item._id, isLiked });
   };
 
-  // Check if the item was liked by the current user
-  // The likes array should be an array of ids
-  const isLiked = item.likes.some(id => id === currentUser._id);
+  const isLiked = item.likes.some((id) => id === currentUser._id);
 
   // Create a variable which you then set in `className` for the like button
-  const itemLikeButtonClassName = `card__like-button ${isLiked ? "card__like-button_liked" : ""}`;
+  const itemLikeButtonClassName = `card__like-button ${
+    isLiked ? "card__like-button_liked" : ""
+  }`;
 
   return (
     <li className="card">

@@ -1,27 +1,56 @@
-/* LoginModal styles can inherit from the base modal styles */
-/* Add any specific styles for the LoginModal here if needed */
+.modal__content {
+  background-color: #fff;
+  position: relative;
+  padding: 28px 28px 36px;
+  max-width: 496px;
+  height: 304px;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 20px;
+  border-width: 1px;
+  border-color: #0000004d;
+}
 
-.modal__label {
+/* .modal__login {
+  background-color: #fff;
+  position: relative;
+  padding: 28px 28px 28px 28px;
+  max-width: 496px;
+  width: 496px;
+  height: 340px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  border-width: 1px;
+  border-color: #0000004d;
+} */
+
+.modal__label-login {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
   font-family: "Cabinet Grotesk", Arial, sans-serif;
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;
+  margin-bottom: 24px;
   color: rgba(0, 0, 0, 0.7);
 }
 
-.modal__input {
-  margin-top: 8px;
-  padding: 16px 12px;
-  border: 1px solid rgba(0, 0, 0, 0.4);
-  border-radius: 4px;
+.modal__login-input {
+  padding: 16px 12px 8px 0;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 0;
   font-family: "Cabinet Grotesk", Arial, sans-serif;
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;
-  color: rgba(0, 0, 0, 0.7);
+  color: rgba(0, 0, 0, 0.5);
+  background-color: transparent;
+  margin-top: 0px;
+}
+
+.modal__login-label:last-of-type {
+  margin-top: 12px;
 }
 
 .modal__input::placeholder {
@@ -31,4 +60,36 @@
 .modal__input:focus {
   outline: none;
   border-color: #2f80ed;
+}
+
+.modal__login-button-section {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  gap: 16px;
+}
+
+.modal__login-submit {
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #ffffff;
+  padding: 8px 16px;
+  width: auto;
+  min-width: 73px;
+  height: 36px;
+  border-radius: 4px;
+  background-color: #0000004d;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal__login-or-text {
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.6);
 }

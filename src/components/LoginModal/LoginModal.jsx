@@ -24,16 +24,15 @@ export default function LoginModal({ onClose, isOpen, onLoginSubmit }) {
   return (
     <ModalWithForm
       title="Log in"
-      buttonText="Log in"
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
     >
-      <label htmlFor="login-email" className="modal__label">
+      <label htmlFor="login-email" className="modal__label-login">
         Email{" "}
         <input
-          type="email"
           className="modal__input"
+          type="email"
           id="login-email"
           placeholder="Email"
           required
@@ -41,11 +40,11 @@ export default function LoginModal({ onClose, isOpen, onLoginSubmit }) {
           value={email}
         />
       </label>
-      <label htmlFor="login-password" className="modal__label">
+      <label htmlFor="login-password" className="modal__label-login">
         Password{" "}
         <input
-          type="password"
           className="modal__input"
+          type="password"
           id="login-password"
           placeholder="Password"
           required
@@ -53,6 +52,12 @@ export default function LoginModal({ onClose, isOpen, onLoginSubmit }) {
           value={password}
         />
       </label>
+      <div className="modal__login-button-section">
+        <button type="submit" className="modal__login-submit">
+          Log in
+        </button>
+        <span className="modal__login-or-text">or Sign Up</span>
+      </div>
     </ModalWithForm>
   );
 }
