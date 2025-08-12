@@ -22,12 +22,13 @@ export default function LoginModal({ onClose, isOpen, onLoginSubmit }) {
   };
 
   return (
-    <ModalWithForm
-      title="Log in"
-      isOpen={isOpen}
-      onClose={onClose}
-      onSubmit={handleSubmit}
-    >
+    <div className="login-modal">
+      <ModalWithForm
+        title="Log in"
+        isOpen={isOpen}
+        onClose={onClose}
+        onSubmit={handleSubmit}
+      >
       <label htmlFor="login-email" className="modal__label-login">
         Email{" "}
         <input
@@ -59,5 +60,6 @@ export default function LoginModal({ onClose, isOpen, onLoginSubmit }) {
         <span className="modal__login-or-text">or Sign Up</span>
       </div>
     </ModalWithForm>
+    </div>
   );
 }
