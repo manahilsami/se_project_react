@@ -16,7 +16,9 @@
 
 .sidebar {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   width: 229px;
   height: 56px;
   gap: 16px;
