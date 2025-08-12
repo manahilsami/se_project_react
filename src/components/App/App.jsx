@@ -74,13 +74,24 @@ function App() {
     signup({ name, avatar, email, password })
       .then((response) => {
         console.log("User registered successfully:", response);
-        setCurrentUser(response.user || response);
+        return signin({ email, password });
+      })
+      .then((res) => {
+        console.log("User automatically signed in after registration");
+        if (res.token) {
+          localStorage.setItem("jwt", res.token);
+          return checkToken(res.token);
+        }
+        return Promise.reject("No token received");
+      })
+      .then((userData) => {
+        console.log("User data fetched after registration:", userData);
+        setCurrentUser(userData);
         setIsLoggedIn(true);
         closeActiveModal();
-        console.log("User automatically signed in after registration");
       })
       .catch((err) => {
-        console.error("Registration failed:", err);
+        console.error("Registration/Login failed:", err);
       });
   };
 
@@ -92,9 +103,13 @@ function App() {
         if (res.token) {
           localStorage.setItem("jwt", res.token);
           console.log("JWT token stored in localStorage");
+          return checkToken(res.token);
         }
-
-        setCurrentUser(res.user || res);
+        return Promise.reject("No token received");
+      })
+      .then((userData) => {
+        console.log("User data fetched:", userData);
+        setCurrentUser(userData);
         setIsLoggedIn(true);
         closeActiveModal();
       })
@@ -108,7 +123,7 @@ function App() {
     updateProfile({ name, avatar }, token)
       .then((updatedUser) => {
         console.log("Profile updated successfully:", updatedUser);
-        setCurrentUser(updatedUser.user || updatedUser);
+        setCurrentUser(updatedUser);
         closeActiveModal();
       })
       .catch((err) => {
@@ -199,12 +214,11 @@ function App() {
       checkToken(token)
         .then((res) => {
           console.log("Token is valid, user authenticated:", res);
-          setCurrentUser(res.user || res);
+          setCurrentUser(res);
           setIsLoggedIn(true);
         })
         .catch((err) => {
           console.error("Token validation failed:", err);
-
           localStorage.removeItem("jwt");
         });
     }

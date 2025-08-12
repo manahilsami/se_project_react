@@ -1,5 +1,5 @@
 import ClothesSection from "../ClothesSection/ClothesSection";
-import Sidebar from "../SideBar/SideBar";
+import SideBar from "../SideBar/SideBar";
 import "./Profile.css";
 
 function Profile({
@@ -13,8 +13,8 @@ function Profile({
   return (
     <div className="profile">
       <section className="profile__sidebar">
-        <SideBar 
-          handleEditProfileClick={handleEditProfileClick} 
+        <SideBar
+          handleEditProfileClick={handleEditProfileClick}
           handleSignOut={handleSignOut}
         />
       </section>

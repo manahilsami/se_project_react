@@ -34,12 +34,11 @@ export default function AddItemModal({
   return (
     <ModalWithForm
       title="New garment"
-      buttonText="Add garment"
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
     >
-      <label htmlFor="name" className="modal__label">
+      <label htmlFor="name" className="modal__label-additem">
         Name{" "}
         <input
           type="text"
@@ -53,7 +52,7 @@ export default function AddItemModal({
           value={name}
         />
       </label>
-      <label htmlFor="imageUrl" className="modal__label">
+      <label htmlFor="imageUrl" className="modal__label-additem">
         Image{" "}
         <input
           type="url"
@@ -104,6 +103,9 @@ export default function AddItemModal({
           Cold
         </label>
       </fieldset>
+      <button type="submit" className="modal__submit">
+        Add garment
+      </button>
     </ModalWithForm>
   );
 }

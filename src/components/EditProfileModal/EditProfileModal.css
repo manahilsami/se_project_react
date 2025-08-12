@@ -1,4 +1,8 @@
-.modal__label {
+.editprofile-modal .modal__content {
+  height: 304px;
+}
+
+.modal__label-editprofile {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
@@ -28,4 +32,35 @@
 .modal__input:focus {
   outline: none;
   border-color: #2f80ed;
+}
+
+.modal__editprofile {
+  font-family: "Cabinet Grotesk Regular", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: #ffffff;
+  padding: 0;
+  width: 100%;
+  max-width: 128px;
+  height: 36px;
+  border-radius: 4px;
+  background-color: #000000;
+  border-width: 0;
+  margin: 12px 0 0 0;
+}
+
+.modal__title {
+  font-family: "Cabinet Grotesk Regular", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  font-style: Bold;
+  color: #000000;
+  margin-bottom: 24px;
+  width: 137px;
+  height: 20px;
+  padding: 0;
 }

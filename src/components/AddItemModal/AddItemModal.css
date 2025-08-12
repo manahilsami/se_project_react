@@ -1,0 +1,40 @@
+.modal__label-additem {
+  display: flex;
+  flex-direction: column;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  margin-bottom: 24px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.modal__label.modal__label_type_radio {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.7);
+  margin: 0;
+}
+
+.modal__addgarment {
+  font-family: "Cabinet Grotesk Regular", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: #ffffff;
+  padding: 8px 16px;
+  width: 100%;
+  max-width: 124px;
+  height: 36px;
+  border-radius: 4px;
+  background-color: #0000004d;
+  border-width: 0;
+  margin: 16px 0 0 0;
+}
