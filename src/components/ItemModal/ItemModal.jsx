@@ -2,7 +2,7 @@ import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./ItemModal.css";
 
-function ItemModal({ activeModal, onClose, onDelete, card }) {
+function ItemModal({ activeModal, onClose, onDeleteClick, card }) {
   const currentUser = useContext(CurrentUserContext);
 
   const isOwn = currentUser && card.owner === currentUser._id;
@@ -28,7 +28,7 @@ function ItemModal({ activeModal, onClose, onDelete, card }) {
           <div className="modal__footer">
             {isOwn && (
               <button
-                onClick={onDelete}
+                onClick={onDeleteClick}
                 type="button"
                 className="modal__delete_item"
               >

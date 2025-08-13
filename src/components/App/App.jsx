@@ -15,6 +15,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
+import DeleteModal from "../DeleteModal/DeleteModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import {
   getItems,
@@ -64,6 +65,10 @@ function App() {
 
   const handleEditProfileClick = () => {
     setActiveModal("edit-profile");
+  };
+
+  const handleDeleteClick = () => {
+    setActiveModal("delete-confirm");
   };
 
   const closeActiveModal = () => {
@@ -167,10 +172,8 @@ function App() {
 
   const handleCardLike = ({ id, isLiked }) => {
     const token = localStorage.getItem("jwt");
-    // Check if this card is not currently liked
     !isLiked
-      ? // if so, send a request to add the user's id to the card's likes array
-        addCardLike(id, token)
+      ? addCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
               cards.map((item) =>
@@ -181,8 +184,7 @@ function App() {
             );
           })
           .catch((err) => console.log(err))
-      : // if not, send a request to remove the user's id from the card's likes array
-        removeCardLike(id, token)
+      : removeCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
               cards.map((item) =>
@@ -283,7 +285,7 @@ function App() {
             activeModal={activeModal}
             card={selectedCard}
             onClose={closeActiveModal}
-            onDelete={handleDeleteItem}
+            onDeleteClick={handleDeleteClick}
           />
           <RegisterModal
             isOpen={activeModal === "register"}
@@ -299,6 +301,11 @@ function App() {
             isOpen={activeModal === "edit-profile"}
             onClose={closeActiveModal}
             onEditProfileSubmit={handleEditProfileSubmit}
+          />
+          <DeleteModal
+            activeModal={activeModal}
+            onClose={closeActiveModal}
+            onDelete={handleDeleteItem}
           />
           <Footer />
         </div>

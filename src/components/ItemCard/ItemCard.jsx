@@ -7,7 +7,6 @@ import "./ItemCard.css";
 function ItemCard({ item, onCardClick, onCardLike }) {
   const currentUser = useContext(CurrentUserContext);
 
-  // Return early if currentUser is not loaded yet
   if (!currentUser) {
     return null;
   }

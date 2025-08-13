@@ -40,9 +40,6 @@ export default function EditProfileModal({
         onClose={onClose}
         onSubmit={handleSubmit}
       >
-        {/* <div>
-          <h2 className="modal__title-editprofile">Change profile data</h2>
-        </div> */}
         <label htmlFor="edit-name" className="modal__label-editprofile">
           Name *{" "}
           <input
