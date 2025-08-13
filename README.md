@@ -37,6 +37,7 @@ This is a simple weather-based clothing app built with **React** and **Vite**. I
      ```bash
      npx json-server --watch db.json --port 3001
      ```
+   - Here is a link to the back-end repo: https://github.com/manahilsami/se_project_express
 
 ---
 
