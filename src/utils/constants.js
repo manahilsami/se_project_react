@@ -59,7 +59,6 @@ export const weatherOptions = [
     condition: "snow",
     url: new URL("../assets/night/snow.png", import.meta.url).href,
   },
-  // Additional weather conditions that might be returned by OpenWeatherMap
   {
     day: true,
     condition: "mist",
