@@ -16,6 +16,18 @@ function WeatherCard({ weatherData }) {
   const weatherOptionUrl = filteredOptions[0]?.url;
   const weatherOptionCondition = filteredOptions[0]?.condition;
 
+  // If no matching weather option is found, don't render the image
+  if (!weatherOptionUrl) {
+    return (
+      <section className="weather-card">
+        <p className="weather-card__temp">
+          {weatherData.temp[currentTemperatureUnit]} &deg;{" "}
+          {currentTemperatureUnit}
+        </p>
+      </section>
+    );
+  }
+
   return (
     <section className="weather-card">
       <p className="weather-card__temp">

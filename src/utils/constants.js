@@ -16,6 +16,11 @@ export const weatherOptions = [
   },
   {
     day: true,
+    condition: "drizzle",
+    url: new URL("../assets/day/rain.png", import.meta.url).href,
+  },
+  {
+    day: true,
     condition: "thunderstorm",
     url: new URL("../assets/day/thunderstorm.png", import.meta.url).href,
   },
@@ -23,11 +28,6 @@ export const weatherOptions = [
     day: true,
     condition: "snow",
     url: new URL("../assets/day/snow.png", import.meta.url).href,
-  },
-  {
-    day: true,
-    condition: "clouds",
-    url: new URL("../assets/day/broken-clouds.png", import.meta.url).href,
   },
   {
     day: false,
@@ -46,6 +46,11 @@ export const weatherOptions = [
   },
   {
     day: false,
+    condition: "drizzle",
+    url: new URL("../assets/night/rain.png", import.meta.url).href,
+  },
+  {
+    day: false,
     condition: "thunderstorm",
     url: new URL("../assets/night/thunderstorm.png", import.meta.url).href,
   },
@@ -54,10 +59,36 @@ export const weatherOptions = [
     condition: "snow",
     url: new URL("../assets/night/snow.png", import.meta.url).href,
   },
+  // Additional weather conditions that might be returned by OpenWeatherMap
+  {
+    day: true,
+    condition: "mist",
+    url: new URL("../assets/day/cloudy.png", import.meta.url).href,
+  },
+  {
+    day: true,
+    condition: "fog",
+    url: new URL("../assets/day/cloudy.png", import.meta.url).href,
+  },
+  {
+    day: true,
+    condition: "haze",
+    url: new URL("../assets/day/cloudy.png", import.meta.url).href,
+  },
   {
     day: false,
-    condition: "clouds",
-    url: new URL("../assets/night/broken-clouds.png", import.meta.url).href,
+    condition: "mist",
+    url: new URL("../assets/night/cloudy.png", import.meta.url).href,
+  },
+  {
+    day: false,
+    condition: "fog",
+    url: new URL("../assets/night/cloudy.png", import.meta.url).href,
+  },
+  {
+    day: false,
+    condition: "haze",
+    url: new URL("../assets/night/cloudy.png", import.meta.url).href,
   },
 ];
 
