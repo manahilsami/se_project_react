@@ -29,7 +29,7 @@ This is a simple weather-based clothing app built with **React** and **Vite**. I
    npm run dev
    ```
 
-   The app will open at [http://localhost:5173](http://localhost:5173) (or whatever port Vite picks).
+   The app will open at [http://localhost:3000](http://localhost:3000) (or whatever port Vite picks).
 
 3. **(Optional) Run the backend:**
    - This project expects a backend running at `http://localhost:3001` (see `src/utils/api.js`).
