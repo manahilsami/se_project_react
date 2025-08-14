@@ -1,0 +1,13 @@
+# Third-party CSS files
+src/vendor/normalize.css
+
+# Build output
+dist/
+build/
+
+# Dependencies
+node_modules/
+
+# Generated files
+*.min.css
+*.min.js

@@ -7,15 +7,12 @@ import "./ItemCard.css";
 function ItemCard({ item, onCardClick, onCardLike }) {
   const currentUser = useContext(CurrentUserContext);
 
-  if (!currentUser) {
-    return null;
-  }
-
   const handleCardClick = () => {
     onCardClick(item);
   };
 
-  const isLiked = item.likes.some((id) => id === currentUser._id);
+  const isLiked =
+    currentUser && item.likes.some((id) => id === currentUser._id);
 
   const handleLike = () => {
     onCardLike({ id: item._id, isLiked });
