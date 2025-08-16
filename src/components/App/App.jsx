@@ -1,21 +1,26 @@
+// External library imports
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
+// Utility/API imports
+import { getWeather, filterWeatherData } from "../../utils/weatherApi";
+
 import "./App.css";
 import { coordinates, apiKey } from "../../utils/constants";
+
+// Internal component imports
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Main from "../Main/Main";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
-import { getWeather, filterWeatherData } from "../../utils/weatherApi";
-import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import DeleteModal from "../DeleteModal/DeleteModal";
+
+// API imports
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import {
   getItems,
@@ -25,6 +30,9 @@ import {
   removeCardLike,
 } from "../../utils/api";
 import { signup, signin, checkToken, updateProfile } from "../../utils/auth";
+
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -78,11 +86,9 @@ function App() {
   const handleRegisterSubmit = ({ name, avatar, email, password }) => {
     signup({ name, avatar, email, password })
       .then((response) => {
-        console.log("User registered successfully:", response);
         return signin({ email, password });
       })
       .then((res) => {
-        console.log("User automatically signed in after registration");
         if (res.token) {
           localStorage.setItem("jwt", res.token);
           return checkToken(res.token);
@@ -90,7 +96,6 @@ function App() {
         return Promise.reject("No token received");
       })
       .then((userData) => {
-        console.log("User data fetched after registration:", userData);
         setCurrentUser(userData);
         setIsLoggedIn(true);
         closeActiveModal();
@@ -103,17 +108,13 @@ function App() {
   const handleLoginSubmit = ({ email, password }) => {
     signin({ email, password })
       .then((res) => {
-        console.log("User logged in successfully:", res);
-
         if (res.token) {
           localStorage.setItem("jwt", res.token);
-          console.log("JWT token stored in localStorage");
           return checkToken(res.token);
         }
         return Promise.reject("No token received");
       })
       .then((userData) => {
-        console.log("User data fetched:", userData);
         setCurrentUser(userData);
         setIsLoggedIn(true);
         closeActiveModal();
@@ -127,7 +128,6 @@ function App() {
     const token = localStorage.getItem("jwt");
     updateProfile({ name, avatar }, token)
       .then((updatedUser) => {
-        console.log("Profile updated successfully:", updatedUser);
         setCurrentUser(updatedUser);
         closeActiveModal();
       })
@@ -203,7 +203,9 @@ function App() {
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
       })
-      .catch(console.error);
+      .catch((err) => {
+        console.error("Failed to fetch weather data:", err);
+      });
   }, []);
 
   useEffect(() => {
@@ -215,7 +217,9 @@ function App() {
         }));
         setClothingItems(formattedItems);
       })
-      .catch(console.error);
+      .catch((err) => {
+        console.error("Failed to fetch clothing items:", err);
+      });
   }, []);
 
   useEffect(() => {
@@ -223,7 +227,6 @@ function App() {
     if (token) {
       checkToken(token)
         .then((res) => {
-          console.log("Token is valid, user authenticated:", res);
           setCurrentUser(res);
           setIsLoggedIn(true);
         })
