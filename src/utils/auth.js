@@ -1,11 +1,6 @@
-const baseUrl = "http://localhost:3001";
+import { checkResponse } from "./api.js";
 
-const processResponse = (res) => {
-  if (res.ok) {
-    return res.json();
-  }
-  return Promise.reject(`Error: ${res.status}`);
-};
+const baseUrl = "http://localhost:3001";
 
 export const signup = ({ name, avatar, email, password }) => {
   return fetch(`${baseUrl}/signup`, {
@@ -14,7 +9,7 @@ export const signup = ({ name, avatar, email, password }) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ name, avatar, email, password }),
-  }).then(processResponse);
+  }).then(checkResponse);
 };
 
 export const signin = ({ email, password }) => {
@@ -24,7 +19,7 @@ export const signin = ({ email, password }) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
-  }).then(processResponse);
+  }).then(checkResponse);
 };
 
 export const checkToken = (token) => {
@@ -34,7 +29,7 @@ export const checkToken = (token) => {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  }).then(processResponse);
+  }).then(checkResponse);
 };
 
 export const updateProfile = ({ name, avatar }, token) => {
@@ -45,5 +40,5 @@ export const updateProfile = ({ name, avatar }, token) => {
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, avatar }),
-  }).then(processResponse);
+  }).then(checkResponse);
 };

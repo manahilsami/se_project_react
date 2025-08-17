@@ -53,4 +53,11 @@ function removeCardLike(id, token) {
   }).then(checkResponse);
 }
 
-export { getItems, postItem, deleteItem, addCardLike, removeCardLike };
+export {
+  getItems,
+  postItem,
+  deleteItem,
+  addCardLike,
+  removeCardLike,
+  checkResponse,
+};

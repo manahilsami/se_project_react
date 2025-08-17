@@ -2,7 +2,12 @@ import "./RegisterModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState, useEffect } from "react";
 
-export default function RegisterModal({ onClose, isOpen, onRegisterSubmit }) {
+export default function RegisterModal({
+  onClose,
+  isOpen,
+  onRegisterSubmit,
+  onLoginClick,
+}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -34,6 +39,10 @@ export default function RegisterModal({ onClose, isOpen, onRegisterSubmit }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onRegisterSubmit({ email, password, name, avatar });
+  };
+
+  const handleLoginClick = () => {
+    onLoginClick();
   };
 
   return (
@@ -98,7 +107,13 @@ export default function RegisterModal({ onClose, isOpen, onRegisterSubmit }) {
         <button type="submit" className="modal__register-submit">
           Sign up
         </button>
-        <span className="modal__register-or-text">or Log In</span>
+        <button
+          type="button"
+          className="modal__register-or-text"
+          onClick={handleLoginClick}
+        >
+          or Log In
+        </button>
       </div>
     </ModalWithForm>
   );
