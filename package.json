@@ -39,5 +39,6 @@
   "bugs": {
     "url": "https://github.com/manahilsami/se_project_react/issues"
   },
-  "homepage": "http://wtwrms.jumpingcrab.com"
+  "homepage": "http://wtwrms.jumpingcrab.com",
+  "deploy": "npm run build && scp -r ./dist/* manahil_s123@wtwrms.jumpingcrab.com:/home/manahil_s123/frontend"
 }
